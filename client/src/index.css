@@ -139,4 +139,29 @@
   .btn-secondary:hover {
     @apply bg-sidebar-hover;
   }
+
+  @layer base {
+    * {
+      @apply border-border; 
+      /* Consider if you REALLY need a border on everything. 
+         This might add visual clutter, though not directly spacing. */
+    }
+
+    body {
+      @apply bg-background text-foreground font-secondary antialiased leading-relaxed; 
+      /* Added leading-relaxed */
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      @apply font-primary tracking-normal mb-4; 
+      /* Changed tracking-tight to tracking-normal */
+      /* Added mb-4 (margin-bottom: 1rem) for spacing below headings */
+      /* Adjust mb-4 value (e.g., mb-2, mb-6) as needed */
+    }
+
+    /* Optional: Add default spacing below paragraphs if needed */
+    p {
+      @apply mb-4; 
+    } 
+  }
 }
