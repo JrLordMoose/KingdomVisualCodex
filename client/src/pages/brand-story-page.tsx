@@ -14,7 +14,7 @@ import { useQuery, useMutation } from "@tanstack/react-query";
 import { Brand } from "@shared/schema";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose, DialogDescription } from "@/components/ui/dialog";
 
 type BrandStoryFormValues = {
   name: string;
@@ -592,7 +592,7 @@ export default function BrandStoryPage() {
       </Form>
       {/* Preview Dialog */}
       <Dialog open={showPreview} onOpenChange={setShowPreview}>
-        <DialogContent className="bg-card-bg border-card-border max-w-3xl">
+        <DialogContent className="bg-card-bg border-card-border max-w-3xl max-h-[80vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="text-2xl font-primary text-white flex items-center justify-between">
               <span>Brand Story Preview</span>
@@ -602,6 +602,9 @@ export default function BrandStoryPage() {
                 </Button>
               </DialogClose>
             </DialogTitle>
+            <p className="text-light-gray font-secondary mt-2 text-sm">
+              Preview how your brand story will appear in the final brand guide
+            </p>
           </DialogHeader>
           
           <div className="space-y-6 py-4">
