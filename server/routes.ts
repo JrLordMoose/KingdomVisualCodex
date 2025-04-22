@@ -4,11 +4,11 @@ import { storage } from "./storage";
 import { setupAuth } from "./auth";
 
 export async function registerRoutes(app: Express): Promise<Server> {
-  // put application routes here
+  // Set up authentication routes (/api/register, /api/login, /api/logout, /api/user)
+  setupAuth(app);
+  
+  // Add other application routes here
   // prefix all routes with /api
-
-  // use storage to perform CRUD operations on the storage interface
-  // e.g. storage.insertUser(user) or storage.getUserByUsername(username)
 
   const httpServer = createServer(app);
 

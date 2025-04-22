@@ -1,5 +1,6 @@
 import { users, type User, type InsertUser } from "@shared/schema";
 import session from "express-session";
+import createMemoryStore from "memorystore";
 
 // modify the interface with any CRUD methods
 // you might need
@@ -23,7 +24,6 @@ export class MemStorage implements IStorage {
     this.currentId = 1;
     
     // Create a simple in-memory session store
-    const createMemoryStore = require('memorystore');
     const MemoryStore = createMemoryStore(session);
     this.sessionStore = new MemoryStore({
       checkPeriod: 86400000 // prune expired entries every 24h
