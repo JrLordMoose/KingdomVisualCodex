@@ -7,6 +7,7 @@ import NotFound from "@/pages/not-found";
 import HomePage from "@/pages/home-page";
 import AuthPage from "@/pages/auth-page";
 import BrandStoryPage from "@/pages/brand-story-page";
+import BrandMoodboardPage from "@/pages/brand-moodboard-page";
 import LogoGuidePage from "@/pages/logo-guide-page";
 import ColorGuidePage from "@/pages/color-guide-page";
 import TypographyPage from "@/pages/typography-page";
@@ -23,6 +24,7 @@ function Router() {
       <Route path="/auth" component={AuthPage} />
       <ProtectedRoute path="/" component={HomePage} />
       <ProtectedRoute path="/brand-story" component={BrandStoryPage} />
+      <ProtectedRoute path="/brand-moodboard" component={BrandMoodboardPage} />
       <ProtectedRoute path="/logo-guide" component={LogoGuidePage} />
       <ProtectedRoute path="/color-guide" component={ColorGuidePage} />
       <ProtectedRoute path="/typography" component={TypographyPage} />

@@ -83,7 +83,7 @@ export function Sidebar() {
             className={`sidebar-link ${location === item.href ? 'active' : ''}`}
             onClick={(e) => {
               e.preventDefault();
-              window.history.pushState({}, "", item.href);
+              window.location.href = item.href;
             }}
           >
             <item.icon className="h-5 w-5 mr-3" />
@@ -102,7 +102,7 @@ export function Sidebar() {
             className={`sidebar-link ${location === item.href ? 'active' : ''}`}
             onClick={(e) => {
               e.preventDefault();
-              window.history.pushState({}, "", item.href);
+              window.location.href = item.href;
             }}
           >
             <item.icon className="h-5 w-5 mr-3" />
@@ -117,7 +117,7 @@ export function Sidebar() {
           className="flex items-center p-2 rounded hover:bg-sidebar-hover"
           onClick={(e) => {
             e.preventDefault();
-            window.history.pushState({}, "", "/profile");
+            window.location.href = "/profile";
           }}
         >
           <div className="w-8 h-8 rounded-full bg-branding-orange text-white flex items-center justify-center font-secondary text-sm">
