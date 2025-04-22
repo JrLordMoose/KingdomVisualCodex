@@ -14,7 +14,7 @@ import TypographyPage from "@/pages/typography-page";
 import DigitalGuidelinesPage from "@/pages/digital-guidelines-page";
 import PrintGuidelinesPage from "@/pages/print-guidelines-page";
 import ExportPage from "@/pages/export-page";
-// import ProfilePage from "@/pages/profile-page"; // Commented out until profile page is implemented
+import ProfilePage from "@/pages/profile-page";
 import { ProtectedRoute } from "./lib/protected-route";
 import { AuthProvider } from "@/hooks/use-auth";
 
@@ -31,7 +31,7 @@ function Router() {
       <ProtectedRoute path="/digital-guidelines" component={DigitalGuidelinesPage} />
       <ProtectedRoute path="/print-guidelines" component={PrintGuidelinesPage} />
       <ProtectedRoute path="/export" component={ExportPage} />
-      {/* <ProtectedRoute path="/profile" component={ProfilePage} /> */}
+      <ProtectedRoute path="/profile" component={ProfilePage} />
       <Route component={NotFound} />
     </Switch>
   );
