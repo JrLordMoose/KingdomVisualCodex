@@ -139,6 +139,12 @@
   .btn-secondary:hover {
     @apply bg-sidebar-hover;
   }
+  
+  /* Special style for Anton font in titles to improve spacing */
+  .font-primary.text-2xl, h1.font-primary, h2.font-primary, h3.font-primary, h4.font-primary, h5.font-primary, h6.font-primary {
+    @apply tracking-wide leading-relaxed py-1;
+    letter-spacing: 0.05em;
+  }
 
   @layer base {
     * {

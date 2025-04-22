@@ -36,7 +36,7 @@ const CardTitle = React.forwardRef<
   React.createElement(tag, {
     ref: ref,
     className: cn(
-      "text-2xl font-semibold leading-snug tracking-normal",
+      "text-2xl font-semibold leading-relaxed tracking-wide",
       className
     ),
     ...props

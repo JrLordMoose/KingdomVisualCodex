@@ -1,0 +1,28 @@
+Objective: Fix the "bunched up" letter spacing and line height primarily in the `CardTitle` component and ensure similar heading elements are appropriately spaced across the application.
+
+Context:
+1.  The `CardTitle` component, defined in `client/src/components/ui/card.tsx`, currently uses `leading-none` and `tracking-tight` in its base styles.
+2.  When combined with the `font-primary` ('Anton', defined in `tailwind.config.ts`), which is a condensed font, this results in text that feels too close together, as seen in the screenshot for titles like "Brand Basics", "Brand Voice", and "Target Audience".
+3.  Instances of `CardTitle` (like in `client/src/pages/brand-story-page.tsx`) might apply `font-primary` via `className`, inheriting the problematic base spacing.
+4.  Global styles for `h1`-`h6` in `client/src/index.css` already use `tracking-normal`, but `CardTitle` currently renders a `div`, not a heading tag.
+
+Instructions:
+
+1.  **Modify `CardTitle` Base Component:**
+    *   Locate the `CardTitle` component definition in `client/src/components/ui/card.tsx`.
+    *   In its base `className` array (within the `cn()` function), replace `leading-none` with `leading-snug` (value: 1.375).
+    *   Replace `tracking-tight` with `tracking-normal`.
+
+2.  **Improve `CardTitle` Semantics (Recommended):**
+    *   Modify the `CardTitle` component to render a semantic HTML heading element (e.g., default to `h3`) instead of a `div`. You can use `React.createElement(tag, ...)` and add an optional `tag` prop.
+    *   **Important:** After changing to a heading tag, verify that the global styles for headings in `client/src/index.css` do not introduce unwanted conflicts with the component's specific styles. Adjust either the component's base styles or the global `h` styles if necessary to ensure the intended `CardTitle` appearance (size, weight, spacing) is maintained consistently.
+
+3.  **Review Other Headings/Titles:**
+    *   Briefly check other prominent heading/title elements in the application (e.g., the main "Brand Story" title, any other custom header components) to ensure they aren't also suffering from overly tight `leading` or `tracking` values. Apply similar adjustments (`leading-snug`/`leading-relaxed`, `tracking-normal`) if necessary. Focus on elements using `font-primary` ('Anton') or other bold/condensed fonts where spacing is critical.
+
+4.  **Constraints:**
+    *   Focus *only* on adjustments related to `line-height` (leading) and `letter-spacing` (tracking) to fix the "bunched up" appearance.
+    *   Do not remove existing functionality or unrelated styles (like colors, font weight `font-semibold`, padding, etc.).
+    *   Ensure the changes apply correctly in both dark (default) and light themes if applicable.
+
+Please apply these modifications to improve text readability in titles and headings.
