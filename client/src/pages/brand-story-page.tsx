@@ -343,27 +343,77 @@ export default function BrandStoryPage() {
                 
                 <CardContent className="space-y-5">
                   {editMode.voice ? (
-                    <div className="space-y-4">
-                      {/* Edit mode for keywords and tone would go here */}
-                      {/* For simplicity, using a simplified version */}
-                      <FormItem className="space-y-2">
-                        <FormLabel className="block text-xs uppercase tracking-wider font-secondary text-light-gray">Brand Tone</FormLabel>
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                          {["Professional", "Conversational", "Bold", "Friendly", "Technical", "Playful"].map((tone) => (
-                            <div 
-                              key={tone}
-                              onClick={() => form.setValue("tone", tone)}
-                              className={`bg-sidebar-hover ${
-                                form.watch("tone") === tone 
-                                  ? 'border-2 border-branding-orange text-white font-medium' 
-                                  : 'border border-dark-gray text-light-gray hover:border-light-gray'
-                              } rounded-md p-3 text-center cursor-pointer font-secondary`}
-                            >
-                              {tone}
-                            </div>
-                          ))}
-                        </div>
-                      </FormItem>
+                    <div className="space-y-6">
+                      <FormField
+                        control={form.control}
+                        name="keywords"
+                        render={({ field }) => (
+                          <FormItem className="space-y-2">
+                            <FormLabel className="block text-xs uppercase tracking-wider font-secondary text-light-gray">Brand Keywords</FormLabel>
+                            <FormControl>
+                              <div className="space-y-2">
+                                <div className="flex flex-wrap gap-2">
+                                  {Array.isArray(field.value) && field.value.map((keyword, index) => (
+                                    <div key={index} className="bg-sidebar-hover border border-dark-gray rounded-md px-3 py-1.5 text-white text-sm font-secondary flex items-center">
+                                      {keyword}
+                                      <X 
+                                        className="h-3.5 w-3.5 ml-2 text-light-gray hover:text-white cursor-pointer" 
+                                        onClick={(e) => {
+                                          e.stopPropagation();
+                                          const newKeywords = [...field.value];
+                                          newKeywords.splice(index, 1);
+                                          field.onChange(newKeywords);
+                                        }}
+                                      />
+                                    </div>
+                                  ))}
+                                </div>
+                                <div className="flex">
+                                  <Input
+                                    className="w-full bg-sidebar-hover border border-dark-gray rounded-md px-4 py-2.5 text-white font-secondary focus:border-branding-orange focus:outline-none"
+                                    placeholder="Add new keyword"
+                                    onKeyDown={(e) => {
+                                      if (e.key === 'Enter' && e.currentTarget.value.trim()) {
+                                        e.preventDefault();
+                                        const newValue = [...(field.value || []), e.currentTarget.value.trim()];
+                                        field.onChange(newValue);
+                                        e.currentTarget.value = '';
+                                      }
+                                    }}
+                                  />
+                                </div>
+                              </div>
+                            </FormControl>
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <FormField
+                        control={form.control}
+                        name="tone"
+                        render={({ field }) => (
+                          <FormItem className="space-y-2">
+                            <FormLabel className="block text-xs uppercase tracking-wider font-secondary text-light-gray">Brand Tone</FormLabel>
+                            <FormControl>
+                              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                                {["Professional", "Conversational", "Bold", "Friendly", "Technical", "Playful"].map((tone) => (
+                                  <div 
+                                    key={tone}
+                                    onClick={() => field.onChange(tone)}
+                                    className={`bg-sidebar-hover ${
+                                      field.value === tone 
+                                        ? 'border-2 border-branding-orange text-white font-medium' 
+                                        : 'border border-dark-gray text-light-gray hover:border-light-gray'
+                                    } rounded-md p-3 text-center cursor-pointer font-secondary`}
+                                  >
+                                    {tone}
+                                  </div>
+                                ))}
+                              </div>
+                            </FormControl>
+                          </FormItem>
+                        )}
+                      />
                       
                       <div className="flex justify-end">
                         <Button
@@ -533,8 +583,42 @@ export default function BrandStoryPage() {
                 <CardContent className="space-y-5">
                   {editMode.audience ? (
                     <div className="space-y-6">
-                      {/* Edit mode for demographics and psychographics */}
-                      {/* For simplicity, using a simplified version */}
+                      <FormField
+                        control={form.control}
+                        name="demographics"
+                        render={({ field }) => (
+                          <FormItem className="space-y-2">
+                            <FormLabel className="block text-xs uppercase tracking-wider font-secondary text-light-gray">Demographics</FormLabel>
+                            <FormControl>
+                              <Textarea
+                                className="w-full bg-sidebar-hover border border-dark-gray rounded-md px-4 py-2.5 text-white font-secondary focus:border-branding-orange focus:outline-none resize-none h-24"
+                                placeholder="Enter demographics, one per line"
+                                value={Array.isArray(field.value) ? field.value.join('\n') : ''}
+                                onChange={(e) => field.onChange(e.target.value.split('\n'))}
+                              />
+                            </FormControl>
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <FormField
+                        control={form.control}
+                        name="psychographics"
+                        render={({ field }) => (
+                          <FormItem className="space-y-2">
+                            <FormLabel className="block text-xs uppercase tracking-wider font-secondary text-light-gray">Psychographics</FormLabel>
+                            <FormControl>
+                              <Textarea
+                                className="w-full bg-sidebar-hover border border-dark-gray rounded-md px-4 py-2.5 text-white font-secondary focus:border-branding-orange focus:outline-none resize-none h-24"
+                                placeholder="Enter psychographics, one per line"
+                                value={Array.isArray(field.value) ? field.value.join('\n') : ''}
+                                onChange={(e) => field.onChange(e.target.value.split('\n'))}
+                              />
+                            </FormControl>
+                          </FormItem>
+                        )}
+                      />
+                      
                       <div className="flex justify-end">
                         <Button
                           type="button"
