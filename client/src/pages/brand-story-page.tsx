@@ -592,15 +592,10 @@ export default function BrandStoryPage() {
       </Form>
       {/* Preview Dialog */}
       <Dialog open={showPreview} onOpenChange={setShowPreview}>
-        <DialogContent className="bg-card-bg border-card-border max-w-3xl max-h-[80vh] overflow-y-auto">
+        <DialogContent className="bg-card-bg border-card-border max-w-3xl max-h-[80vh] overflow-y-auto" style={{ borderRadius: '8px' }}>
           <DialogHeader>
-            <DialogTitle className="text-2xl font-primary text-white flex items-center justify-between">
-              <span>Brand Story Preview</span>
-              <DialogClose asChild>
-                <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full">
-                  <X className="h-5 w-5 text-light-gray" />
-                </Button>
-              </DialogClose>
+            <DialogTitle className="text-2xl font-primary text-white">
+              Brand Story Preview
             </DialogTitle>
             <p className="text-light-gray font-secondary mt-2 text-sm">
               Preview how your brand story will appear in the final brand guide
