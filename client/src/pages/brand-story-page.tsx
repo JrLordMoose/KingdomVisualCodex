@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -80,7 +80,7 @@ export default function BrandStoryPage() {
   });
   
   // Update form values when data is loaded
-  useState(() => {
+  useEffect(() => {
     if (brandData) {
       form.reset({
         name: brandData.name,
@@ -97,7 +97,7 @@ export default function BrandStoryPage() {
         },
       });
     }
-  });
+  }, [brandData, form]);
   
   const updateBrandMutation = useMutation({
     mutationFn: async (data: Partial<BrandStoryFormValues>) => {
@@ -198,7 +198,10 @@ export default function BrandStoryPage() {
         </div>
         
         <div className="flex space-x-3">
-          <Button className="btn-secondary">
+          <Button 
+            className="btn-secondary"
+            onClick={() => setShowPreview(true)}
+          >
             <Eye className="h-4 w-4 mr-2" />
             <span>Preview</span>
           </Button>
@@ -587,6 +590,74 @@ export default function BrandStoryPage() {
           </div>
         </form>
       </Form>
+      {/* Preview Dialog */}
+      <Dialog open={showPreview} onOpenChange={setShowPreview}>
+        <DialogContent className="bg-card-bg border-card-border max-w-3xl">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-primary text-white flex items-center justify-between">
+              <span>Brand Story Preview</span>
+              <DialogClose asChild>
+                <Button variant="ghost" size="icon" className="h-8 w-8 rounded-full">
+                  <X className="h-5 w-5 text-light-gray" />
+                </Button>
+              </DialogClose>
+            </DialogTitle>
+          </DialogHeader>
+          
+          <div className="space-y-6 py-4">
+            {/* Brand Header */}
+            <div className="text-center space-y-3 border-b border-dark-gray pb-6">
+              <h1 className="text-3xl font-primary text-white tracking-tight">
+                {form.watch("name") || "Brand Name"}
+              </h1>
+              
+              {form.watch("tagline") && (
+                <p className="text-light-gray text-lg italic font-secondary">
+                  "{form.watch("tagline")}"
+                </p>
+              )}
+              
+              {form.watch("missionStatement") && (
+                <p className="text-white font-secondary mt-4 max-w-2xl mx-auto">
+                  {form.watch("missionStatement")}
+                </p>
+              )}
+            </div>
+            
+            {/* Brand Story Content */}
+            <div className="space-y-8">
+              <div>
+                <h2 className="text-xl font-primary text-branding-orange mb-3">Our Story</h2>
+                <p className="text-white font-secondary leading-relaxed">
+                  {form.watch("narrative.origin") || narrativeContent.origin}
+                </p>
+              </div>
+              
+              <div>
+                <h2 className="text-xl font-primary text-branding-orange mb-3">Our Values</h2>
+                <p className="text-white font-secondary leading-relaxed">
+                  {form.watch("narrative.values") || narrativeContent.values}
+                </p>
+              </div>
+              
+              <div>
+                <h2 className="text-xl font-primary text-branding-orange mb-3">Our Vision</h2>
+                <p className="text-white font-secondary leading-relaxed">
+                  {form.watch("narrative.vision") || narrativeContent.vision}
+                </p>
+              </div>
+              
+              <div className="flex flex-wrap gap-3 border-t border-dark-gray pt-6 mt-6">
+                {keywords.map((keyword, index) => (
+                  <div key={index} className="bg-sidebar-hover border border-dark-gray rounded-md px-3 py-1.5 text-white text-sm font-secondary">
+                    {keyword}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </AppLayout>
   );
 }
