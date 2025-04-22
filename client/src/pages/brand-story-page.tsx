@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Edit, Zap, Eye, Save } from "lucide-react";
+import { Edit, Zap, Eye, Save, X } from "lucide-react";
 import { motion } from "framer-motion";
 import { AppLayout } from "@/components/layout/app-layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,6 +14,7 @@ import { useQuery, useMutation } from "@tanstack/react-query";
 import { Brand } from "@shared/schema";
 import { apiRequest, queryClient } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog";
 
 type BrandStoryFormValues = {
   name: string;
@@ -46,6 +47,7 @@ const brandStorySchema = z.object({
 });
 
 export default function BrandStoryPage() {
+  const [showPreview, setShowPreview] = useState(false);
   const [editMode, setEditMode] = useState({
     basics: false,
     voice: false,
@@ -95,7 +97,7 @@ export default function BrandStoryPage() {
         },
       });
     }
-  }, [brandData]);
+  });
   
   const updateBrandMutation = useMutation({
     mutationFn: async (data: Partial<BrandStoryFormValues>) => {
