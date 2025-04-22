@@ -1,0 +1,265 @@
+## Core Application Definition
+Create a complete web application called "KNGDM Visual Codex" - an intelligent brand style guide generator with dynamic AI integration. The application should be production-ready, with clean architecture and comprehensive documentation.
+
+## Application Requirements
+
+### 1. User Experience Flow
+1. Users arrive at a cinematic, airline-inspired landing page with clear value proposition
+2. Authentication options present (OAuth, email/password, or anonymous session)
+3. After login, users complete a brand profile questionnaire:
+   - Brand name and tagline
+   - Mission statement (150 characters max)
+   - 5-10 brand keywords/descriptors
+   - Target audience definition (demographics + psychographics)
+   - Brand tone selection (from predefined options + custom input)
+   - Optional: Brand colors if already established
+4. System generates comprehensive style guide with all sections
+5. Users can edit, regenerate, and customize each section
+6. Export options available with different fidelity and format options
+
+### 2. Technical Architecture
+
+#### Frontend
+- **Framework**: React 18+ with TypeScript
+- **State Management**: React Context API with custom hooks for brand state
+- **Styling**: TailwindCSS with custom theme configuration
+- **Component Library**: Build custom component system with Radix UI primitives
+- **Animations**: Framer Motion for micro-interactions and transitions
+- **Forms**: React Hook Form with Zod validation
+- **Responsive Design**: Mobile-first approach with adaptive layouts
+- **Accessibility**: WCAG AA compliance with keyboard navigation support
+
+#### Backend
+- **API Framework**: Node.js with Express or Next.js API routes
+- **Database**: PostgreSQL with Prisma ORM
+- **Authentication**: NextAuth.js with multiple provider support
+- **File Storage**: AWS S3 or equivalent for asset management
+- **Caching**: Redis for performance optimization
+- **API Documentation**: OpenAPI/Swagger specification
+
+#### AI Integration
+- **Central AI Handler**: Create abstraction layer for multiple AI services
+- **Rate Limiting**: Implement intelligent queuing system for API calls
+- **Fallback Mechanisms**: Design graceful degradation when services unavailable
+- **Service Providers**:
+  - OpenAI API (DALL-E 3) for image generation
+  - Replicate API for Stable Diffusion access
+  - Hugging Face Inference API for specialized models
+  - Google Fonts API + custom font pairing algorithm
+  - Mockup generation via specialized APIs or custom renderer
+
+### 3. Style Guide Sections (Detailed Specifications)
+
+#### Brand Story Module
+- **Input Processing**: Convert keywords and mission into semantic vectors
+- **Generation Algorithm**: Create 3-paragraph narrative with distinct sections:
+  1. Origin/Purpose (aspirational)
+  2. Values/Approach (operational)
+  3. Vision/Future (transformational)
+- **Style Options**: 3 tone variants (professional, conversational, bold)
+- **Editing Interface**: Rich text editor with AI enhancement suggestions
+
+#### Logo Guide Module
+- **Generation Options**:
+  1. AI-generated logo concepts (3-5 options)
+  2. Upload existing logo with automatic background removal
+  3. User sketch-to-logo conversion
+- **Logo Variations**: Automatically create:
+  - Monochrome version
+  - Simplified version for small formats
+  - Favicon/app icon version
+- **Usage Guidelines**: Dynamic generation of proper spacing, minimum size, and usage rules
+- **Export Options**: SVG, PNG (multiple sizes), social media formats
+
+#### Color System Module
+- **Generation Methods**:
+  1. Extract from uploaded logo/images
+  2. Generate from keywords using color psychology
+  3. User-defined with enhancement suggestions
+- **Color Palette Components**:
+  - Primary color (with 5 tint/shade variations)
+  - Secondary color (with 5 tint/shade variations)
+  - Accent color
+  - Neutral palette (5-7 grays)
+- **Accessibility**: WCAG contrast checking for all combinations
+- **Export**: CSS variables, Tailwind config, Figma color styles
+
+#### Typography System
+- **Font Selection Algorithm**:
+  1. Analyze brand personality for optimal font characteristics
+  2. Query Google Fonts API with weighted parameters
+  3. Generate 3 header/body font pairings
+- **Typography Rules Generator**:
+  - Responsive type scale with rem/em units
+  - Line height recommendations
+  - Letter spacing guidelines
+  - Heading hierarchy with visual examples
+- **Export**: CSS variables, Tailwind config, font implementation code
+
+#### Digital Guidelines Module
+- **Component Visualization**:
+  - Buttons (primary, secondary, tertiary)
+  - Form elements
+  - Navigation patterns
+  - Card layouts
+- **Responsive Previews**: Mobile, tablet, desktop mockups
+- **Social Media Templates**: Profile images, cover photos, post templates
+- **Export**: HTML/CSS snippets, component libraries
+
+#### Print Guidelines Module
+- **Template Generator**:
+  - Business cards (3 layout options)
+  - Letterhead design
+  - Simple brochure layouts
+- **Print Specifications**:
+  - CMYK color values
+  - Bleed and margin settings
+  - Paper recommendations
+- **Export**: Print-ready PDF templates
+
+#### Physical Manifestation Module
+- **3D Visualization**:
+  - Signage mockups
+  - Merchandise visualization
+  - Packaging concepts
+- **Materials Suggestions**: Based on brand personality
+- **Export**: High-resolution mockup images
+
+#### Brand Moodboard Generator
+- **Visual Direction Algorithm**:
+  1. Convert brand keywords to visual aesthetic parameters
+  2. Generate descriptive prompt for image synthesis
+  3. Create grid of thematically consistent images
+- **Customization**: Ability to replace/regenerate individual images
+- **Export**: High-resolution composite image
+
+### 4. Integration Capabilities
+
+#### Export System
+- **Format Options**:
+  - PDF (interactive and print-optimized)
+  - Web link (password-protected)
+  - Notion database (with templates)
+  - Google Drive folder with assets
+  - JSON data structure
+- **White-labeling Options**: 
+  - KNGDM-branded with attribution
+  - Client-branded with subdued attribution
+  - Enterprise: completely white-labeled
+
+#### External Service Connections
+- **Authentication**: OAuth2 implementation for all services
+- **Google Workspace**: 
+  - Sheets API for data storage/retrieval
+  - Drive API for asset management
+- **Notion**:
+  - Database integration
+  - Page creation and updating
+- **Design Tools**:
+  - Figma plugin hooks
+  - Canva template generation
+
+### 5. Data Model
+
+```typescript
+// Core data structures
+
+interface Brand {
+  id: string;
+  userId: string;
+  name: string;
+  tagline?: string;
+  mission: string;
+  keywords: string[];
+  targetAudience: TargetAudience;
+  brandTone: BrandTone;
+  createdAt: Date;
+  updatedAt: Date;
+  styleGuide: StyleGuide;
+}
+
+interface StyleGuide {
+  id: string;
+  brandId: string;
+  sections: StyleGuideSection[];
+  exportHistory: ExportRecord[];
+  version: number;
+  lastGenerated: Date;
+}
+
+interface StyleGuideSection {
+  id: string;
+  styleGuideId: string;
+  type: SectionType; // BRAND_STORY, LOGO, COLOR, etc.
+  content: object; // Type varies by section
+  generationParams: object; // AI parameters used
+  order: number;
+  isVisible: boolean;
+}
+
+// Additional interfaces for each section type...
+```
+
+### 6. Performance Requirements
+- Initial page load under 2 seconds
+- Style guide generation under 30 seconds for all sections
+- AI regeneration of any section under 5 seconds
+- Responsive performance across devices
+- Offline editing capabilities with synchronization on reconnect
+
+### 7. Security Considerations
+- User data encryption at rest
+- Secure API key management for third-party services
+- GDPR and CCPA compliance for user data
+- Rate limiting to prevent abuse
+- Input sanitization to prevent injection attacks
+
+### 8. Testing Strategy
+- Unit tests for core functions
+- Integration tests for API endpoints
+- E2E tests for critical user flows
+- Visual regression testing for UI components
+- Performance testing with synthetic load
+
+### 9. Deployment Configuration
+- Containerized application with Docker
+- CI/CD pipeline with GitHub Actions
+- Staging and production environments
+- Monitoring and logging infrastructure
+- Automatic database backups and versioning
+
+## Implementation Instructions
+
+1. Start by creating the data model and database schema
+2. Implement authentication flow and user management
+3. Build core brand questionnaire with validation
+4. Create AI service abstraction layer with provider integration
+5. Implement each style guide section generator in order of complexity
+6. Develop the export system with multiple format support
+7. Add integration capabilities with external services
+8. Implement comprehensive error handling and fallback mechanisms
+9. Add analytics and user behavior tracking
+10. Finalize documentation and deployment configuration
+
+## Sample API Endpoints
+
+```
+POST /api/brands - Create new brand
+GET /api/brands/:id - Retrieve brand details
+PUT /api/brands/:id - Update brand information
+
+POST /api/styleguide/generate - Generate complete style guide
+POST /api/styleguide/section/:sectionId/regenerate - Regenerate specific section
+PUT /api/styleguide/section/:sectionId - Update section content
+
+POST /api/export - Create export in specified format
+```
+
+## Success Criteria
+1. Users can generate a complete brand style guide in under 2 minutes
+2. AI-generated content matches brand personality with 90%+ user satisfaction
+3. Export functionality produces professional-quality deliverables
+4. System handles 100+ concurrent users without performance degradation
+5. Integration with external services works seamlessly
+
+

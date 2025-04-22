@@ -1,0 +1,487 @@
+# KNGDM Visual Codex - Menu Interaction Guidelines
+
+## Dashboard / Home
+
+### Display Elements
+- **Recent Projects Grid**
+  - Card layout with thumbnail preview
+  - Brand name and last modified date
+  - Completion percentage indicator
+  - Quick access button to continue editing
+
+- **Analytics Summary**
+  - Usage statistics card
+  - Weekly activity graph
+  - Popular sections accessed
+  - Brand consistency score
+
+- **Template Gallery**
+  - Horizontal carousel of available templates
+  - Category filtering tabs
+  - Preview thumbnails with hover zoom
+  - "Use Template" and "Preview" buttons
+
+### User Interactions
+- **Hover Effects**
+  - Project cards: Subtle elevation (2px rise)
+  - Action buttons: Background color shift to `sidebar-hover`
+  - Templates: Scale to 105% with shadow enhancement
+
+- **Click Actions**
+  - Project card: Opens project in last edited section
+  - Create new: Opens template selection or blank project
+  - Analytics card: Expands to detailed analytics view
+  - Template: Shows full-screen preview with "Use" option
+
+- **User Operations**
+  - Create new brand guide (+ button)
+  - Delete project (via context menu)
+  - Duplicate project (via context menu)
+  - Pin favorite projects to top
+  - Filter projects by status/date
+  - Export analytics reports
+
+## Brand Story
+
+### Display Elements
+- **Brand Overview Section**
+  - Brand name and logo preview
+  - Mission statement editor
+  - Vision statement editor
+  - Core values list (editable)
+
+- **Target Audience Panel**
+  - Demographics editor
+  - Psychographics editor
+  - User persona cards
+  - Market positioning graph
+
+- **Brand Voice Guidelines**
+  - Tone descriptor tags
+  - Voice examples in different contexts
+  - Do's and don'ts comparison table
+  - Voice consistency checker
+
+### User Interactions
+- **Hover Effects**
+  - Edit icons appear on text sections
+  - Preview examples of tone adjustments
+  - Highlight editable regions with subtle border
+
+- **Click Actions**
+  - Text fields: Transform to edit mode with rich text options
+  - Add section: Opens section type selector
+  - Tone tags: Opens tone adjustment interface
+  - Generate button: Triggers AI content generation
+
+- **User Operations**
+  - Edit any text element inline
+  - Add/remove brand values
+  - Generate AI-assisted content variations
+  - Save custom tone presets
+  - Add custom sections
+  - Export brand story as standalone document
+  - Share brand story with stakeholders (generate link)
+
+## Logo Guide
+
+### Display Elements
+- **Logo Showcase**
+  - Primary logo in hero position
+  - Alternative versions grid (monochrome, simplified)
+  - Responsive variations (for different sizes)
+  - 3D/animation preview (if applicable)
+
+- **Logo Construction**
+  - Grid overlay showing proportions
+  - Clear space guidelines visualization
+  - Minimum size requirements
+  - Construction elements breakdown
+
+- **Usage Rules Panel**
+  - Correct usage examples
+  - Incorrect usage examples with explanations
+  - Background compatibility swatches
+  - Positioning guidelines
+
+### User Interactions
+- **Hover Effects**
+  - Logo variations: Highlight border
+  - Usage examples: Side-by-side comparison overlay
+  - Download button appears on logo assets
+  - Edit button reveals on section headers
+
+- **Click Actions**
+  - Primary logo: Opens detailed view with download options
+  - Color variant: Switches primary display to selected variant
+  - Generate variants: Opens AI logo variation generator
+  - Usage examples: Expands to full catalog of examples
+
+- **User Operations**
+  - Upload custom logos
+  - Generate logo variations via AI
+  - Set color variations
+  - Define spacing and size rules
+  - Add/remove usage examples
+  - Download logos in various formats (SVG, PNG, PDF)
+  - Request refinements via AI
+
+## Color Guide
+
+### Display Elements
+- **Color Palette Display**
+  - Primary colors in large swatches
+  - Secondary colors in medium swatches
+  - Extended palette in smaller swatches
+  - Color system explanation text
+
+- **Color Properties Panel**
+  - Selected color details (HEX, RGB, CMYK, Pantone)
+  - Accessibility scoring (WCAG compliance)
+  - Color psychology notes
+  - Naming convention editor
+
+- **Color Application Examples**
+  - UI element previews with colors applied
+  - Color proportion guidance
+  - Context-specific usage rules
+  - Digital vs. print considerations
+
+### User Interactions
+- **Hover Effects**
+  - Color swatches: Display color code overlay
+  - Copy button appears for color values
+  - Quick-edit icon reveals on swatch corner
+  - Preview button for different contexts
+
+- **Click Actions**
+  - Color swatch: Selects color and displays details
+  - Add color: Opens color picker/creator
+  - Generate palette: Triggers AI color scheme generator
+  - Check contrast: Opens accessibility verification tool
+
+- **User Operations**
+  - Add/remove/edit colors
+  - Generate harmonious palettes via AI
+  - Test accessibility of color combinations
+  - Create color system rules
+  - Export color palettes to various formats (Sketch, Figma, CSS, Tailwind)
+  - Preview colors in different contexts
+  - Save color variants for different applications
+
+## Typography
+
+### Display Elements
+- **Font Showcase**
+  - Primary headings font with specimen
+  - Body text font with specimen
+  - Accent/UI font with specimen
+  - Font pairing preview
+
+- **Typography Scale**
+  - Visual type scale with all sizes
+  - Heading hierarchy demonstration
+  - Line height visualization
+  - Responsive behavior preview
+
+- **Typography Rules**
+  - Font usage guidelines
+  - Proper and improper examples
+  - Weight and style variations
+  - Special case treatments
+
+### User Interactions
+- **Hover Effects**
+  - Font cards: Preview alternate characters
+  - Type scale: Highlight measurements
+  - Edit buttons appear on section headers
+  - Preview button for different devices
+
+- **Click Actions**
+  - Font specimen: Opens detailed view with all characters
+  - Font picker: Opens font selection interface
+  - Generate pairings: Triggers AI font pairing suggestions
+  - Test readability: Opens legibility testing tool
+
+- **User Operations**
+  - Select fonts from library (Google Fonts, Adobe Fonts)
+  - Upload custom fonts
+  - Set type scale and hierarchy
+  - Define responsive behavior rules
+  - Test fonts in various contexts
+  - Generate font pairing recommendations
+  - Export font settings (CSS, design tokens)
+  - Create typographic guidelines documentation
+
+## Digital Guidelines
+
+### Display Elements
+- **Component Library**
+  - UI component grid (buttons, forms, cards)
+  - Interactive state previews
+  - Component variants by context
+  - Implementation notes
+
+- **Digital Brand Applications**
+  - Website mockup previews
+  - Mobile app design guidelines
+  - Email template previews
+  - Social media asset templates
+
+- **Digital Brand Rules**
+  - Animation principles
+  - Interactive behavior specifications
+  - Accessibility requirements
+  - Responsive design rules
+
+### User Interactions
+- **Hover Effects**
+  - Components: Show interactive states (hover, active, focus)
+  - Mockups: Zoom and highlight regions
+  - Copy code button appears on implementation examples
+  - Preview on devices button appears on mockups
+
+- **Click Actions**
+  - Component: Opens detailed view with all states
+  - Add component: Opens component creator
+  - Generate assets: Opens digital asset generator
+  - Test responsive: Opens responsive testing tool
+
+- **User Operations**
+  - Add/edit UI components
+  - Define interactive states and behaviors
+  - Generate digital assets from brand elements
+  - Create responsive guidelines
+  - Test components across device sizes
+  - Export components as code or design assets
+  - Preview brand implementation across platforms
+
+## Print Guidelines
+
+### Display Elements
+- **Print Assets Gallery**
+  - Business card designs
+  - Letterhead and stationary
+  - Brochure and flyer templates
+  - Large format examples
+
+- **Print Specifications**
+  - Paper stock recommendations
+  - Printing technique guidelines
+  - Color calibration notes
+  - Size and bleed specifications
+
+- **Brand in Print Context**
+  - Environmental applications
+  - Packaging examples
+  - Signage demonstrations
+  - Special printing effects
+
+### User Interactions
+- **Hover Effects**
+  - Print examples: Zoom and material preview
+  - Specifications: Show detailed explanation
+  - Download button appears on assets
+  - 3D preview button for packaging
+
+- **Click Actions**
+  - Print asset: Opens detailed view with specifications
+  - Generate asset: Opens print template generator
+  - Material selector: Opens paper/material options
+  - Mockup creator: Opens 3D mockup tool
+
+- **User Operations**
+  - Create print templates from brand elements
+  - Set print specifications (bleed, margins, color space)
+  - Generate printer-ready files
+  - Preview on different materials
+  - Create 3D mockups of print applications
+  - Export print-ready assets (PDF, INDD)
+  - Share with print vendors
+
+## Export
+
+### Display Elements
+- **Export Format Selection**
+  - Format cards (PDF, Web, Notion, etc.)
+  - Preview thumbnail for each format
+  - Format-specific options
+  - Recently used exports
+
+- **Export Configuration**
+  - Section selection checklist
+  - White labeling options
+  - Resolution/quality settings
+  - Recipient options (email, link, download)
+
+- **Export History**
+  - Previous exports timeline
+  - Download/access links
+  - Export configuration details
+  - Usage analytics (views, downloads)
+
+### User Interactions
+- **Hover Effects**
+  - Format cards: Preview sample output
+  - Options: Show explanation tooltip
+  - History items: Show quick access buttons
+  - Configuration items: Show edit button
+
+- **Click Actions**
+  - Format selection: Sets primary format and options
+  - Section checkbox: Toggles inclusion in export
+  - Generate: Creates export with selected options
+  - History item: Opens past export with recreation option
+
+- **User Operations**
+  - Select export format(s)
+  - Configure export options
+  - Choose sections to include/exclude
+  - Set access permissions
+  - Schedule recurring exports
+  - Distribute to team members
+  - Track usage of exported guidelines
+  - Regenerate previous exports with updates
+
+## AI Assistant
+
+### Display Elements
+- **AI Interface**
+  - Chat interface with message history
+  - Suggestion chips for common actions
+  - Current context indicator
+  - Generation settings panel
+
+- **AI Capabilities Menu**
+  - Content generation options
+  - Design enhancement tools
+  - Brand analysis features
+  - Trend research capabilities
+
+- **AI Output Preview**
+  - Real-time generation preview
+  - Multiple variation display
+  - Before/after comparison
+  - Implementation preview
+
+### User Interactions
+- **Hover Effects**
+  - Suggestion chips: Highlight with description
+  - Output variations: Focus with accept/reject buttons
+  - Settings: Show explanation tooltips
+  - History items: Show regenerate option
+
+- **Click Actions**
+  - Send message: Triggers AI response
+  - Suggestion chip: Auto-fills request
+  - Output variation: Selects for implementation
+  - Settings toggle: Adjusts generation parameters
+
+- **User Operations**
+  - Request content generation
+  - Ask brand-specific questions
+  - Generate design alternatives
+  - Enhance existing content
+  - Save favorite prompts
+  - Apply AI suggestions directly to sections
+  - Train AI on brand preferences
+  - Request analysis of brand consistency
+
+## Settings
+
+### Display Elements
+- **User Preferences**
+  - Theme selection (dark/light/auto)
+  - UI density options
+  - Language selection
+  - Notification settings
+
+- **Account Management**
+  - Subscription details
+  - Usage statistics
+  - Team member management
+  - Billing information
+
+- **Application Settings**
+  - Default new project settings
+  - AI assistant configuration
+  - Auto-save frequency
+  - Integration management
+
+### User Interactions
+- **Hover Effects**
+  - Setting cards: Subtle highlight
+  - Toggle switches: Preview state change
+  - Account section: Show edit buttons
+  - Integration cards: Show connection status
+
+- **Click Actions**
+  - Theme toggle: Switches application theme
+  - Add team member: Opens invitation interface
+  - Connect service: Opens OAuth flow
+  - Save preferences: Applies all changes with confirmation
+
+- **User Operations**
+  - Adjust interface preferences
+  - Manage team access and permissions
+  - Connect third-party services
+  - Configure default project settings
+  - Manage subscription and billing
+  - Export account data
+  - Set up automated workflows
+  - Configure security options
+
+## Global Interaction Patterns
+
+### Common Save Operations
+- **Auto-save**
+  - Real-time saving (indicated by subtle checkmark)
+  - 5-second delay after changes stop
+  - Version history point created every 15 minutes
+  - Offline changes cached and synced when reconnected
+
+- **Manual Save**
+  - Save button in action bar (persistent)
+  - Keyboard shortcut: Ctrl/Cmd + S
+  - Named save points with descriptions
+  - Save confirmation with version note option
+
+### Universal Actions
+- **Global Keyboard Shortcuts**
+  - Esc: Close dialogs, cancel operations
+  - Ctrl/Cmd + Z: Undo last action
+  - Ctrl/Cmd + Shift + Z: Redo action
+  - Ctrl/Cmd + F: Focus search
+  - Ctrl/Cmd + /: Open keyboard shortcut help
+
+- **Context Menus**
+  - Right-click on any element shows relevant actions
+  - Section headers include section-specific actions
+  - Asset right-click offers download/edit options
+  - Text elements offer copy/edit/generate options
+
+### State Management
+- **Loading States**
+  - Skeleton screens instead of spinners
+  - Progressive loading of content
+  - Background operations indicator in header
+  - Cancel option for long-running operations
+
+- **Error Handling**
+  - Inline error messages with recovery options
+  - Auto-retry for connection issues
+  - Error notifications with detailed information
+  - Guided recovery steps for complex errors
+
+### Feedback & Notifications
+- **System Notifications**
+  - Toast messages for completed operations
+  - Banner alerts for important system messages
+  - In-app notification center with history
+  - Email notifications for critical events
+
+- **User Feedback Collection**
+  - Reaction buttons on generated content
+  - Improvement suggestions for AI outputs
+  - Feature request button in footer
+  - Satisfaction pulse surveys

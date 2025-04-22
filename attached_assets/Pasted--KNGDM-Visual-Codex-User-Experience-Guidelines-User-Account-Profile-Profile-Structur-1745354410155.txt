@@ -1,0 +1,287 @@
+# KNGDM Visual Codex - User Experience Guidelines
+
+## User Account Profile
+
+### Profile Structure
+- **Profile Header**
+  - Profile picture (with default avatar using brand colors)
+  - Display name
+  - Email address (partially masked for privacy)
+  - Membership level/subscription status
+
+- **Account Information**
+  - Account creation date
+  - Last login date
+  - Subscription tier/plan
+  - Usage statistics (style guides created, templates used)
+
+- **Preferences Section**
+  - Theme toggle (Dark/Light mode)
+  - Email notification settings
+  - Default export format
+  - UI density settings (Compact/Standard/Spacious)
+
+- **Brand Libraries**
+  - List of saved brand style guides
+  - Shared style guides (from team members)
+  - Archived style guides
+  - Recently viewed guides
+
+### Profile Actions
+- Edit profile information
+- Change password
+- Manage subscription
+- Export account data
+- Delete account
+- Manage connected services (Google, Notion)
+
+### Profile Accessibility
+- Access via avatar in top-right corner
+- Keyboard shortcut: `Shift + P`
+- Profile completion percentage indicator
+- Guided tour option for first-time users
+
+### Multi-Brand Management
+- Each user can create and manage multiple brand profiles
+- Switch between brands via dropdown in header
+- Brand organization via folders/tags
+- Team sharing permissions per brand profile
+
+## Navigation System
+
+### Primary Navigation
+- **Left Sidebar Navigation**
+  - Fixed position, always visible
+  - Collapsible to icon-only mode on smaller screens
+  - Key sections:
+    1. Dashboard/Home
+    2. Brand Story
+    3. Logo Guide
+    4. Color Guide
+    5. Typography
+    6. Digital Guidelines
+    7. Print Guidelines
+    8. Export
+
+- **Sidebar Behavior**
+  - Active state: Orange accent bar (4px) on left edge
+  - Hover state: Background shifts to `sidebar-hover` color
+  - Selected state: Text weight increases to medium
+  - Supports keyboard navigation (Tab + Arrow keys)
+
+- **Section Icons**
+  - Consistent monochromatic style
+  - 24px size
+  - Subtle animation on hover (200ms scale)
+  - Active icon matches accent color
+
+### Secondary Navigation
+- **Breadcrumb Navigation**
+  - Located at top of main content area
+  - Shows current location in hierarchy
+  - Clickable path segments
+  - Includes edit history access
+
+- **Section Tabs**
+  - For sub-sections within major sections
+  - Horizontal layout
+  - Underline style for active tab
+  - Subtle hover effect
+
+### Context Navigation
+- **Jump Links**
+  - Quick access to sub-sections
+  - Right-aligned in content header
+  - Sticky on scroll
+  - Indicates current viewport position
+
+- **Action Bar**
+  - Contextual actions for current section
+  - Positioned at top-right of content area
+  - Primary action in accent color
+  - Secondary actions in monochromatic style
+
+### Mobile Navigation
+- Collapsible hamburger menu
+- Bottom navigation bar for primary sections
+- Swipe gestures for section navigation
+- Simplified hierarchy for smaller screens
+
+## Authentication System
+
+### Login Process
+- **Login Screen**
+  - Clean, brand-focused design
+  - Email/username field + password field
+  - "Remember me" option
+  - Forgot password link
+  - OAuth options (Google, Apple, GitHub)
+  - Link to signup page for new users
+
+- **Login Security**
+  - Rate limiting for failed attempts
+  - CAPTCHA after 3 failed attempts
+  - Optional 2FA via email or authenticator app
+  - Secure connection indicators
+  - Password strength indicator
+
+- **Session Management**
+  - Auto-logout after 2 hours of inactivity
+  - Session persistence option
+  - Device management in user profile
+  - Active session indicators
+
+### Sign-up Process
+- **Registration Flow**
+  - Three-step progressive form:
+    1. Email + password creation
+    2. Basic profile information
+    3. Brand questionnaire (optional, can be skipped)
+  - Clear progress indicators
+  - Inline validation with helpful error messages
+  - Terms of service and privacy policy acceptance
+
+- **Onboarding**
+  - Welcome email with verification link
+  - Guided tour of key features
+  - Sample brand guide demo
+  - Quick setup wizard option
+  - Template gallery introduction
+
+- **Account Verification**
+  - Email verification required
+  - Temporary access allowed before verification
+  - Reminder notifications for unverified accounts
+  - Resend verification option
+
+### Password Recovery
+- **Forgot Password Flow**
+  - Email input for recovery link
+  - Security question option (if enabled)
+  - Temporary access code via SMS (if phone verified)
+  - Clear instructions and success messages
+
+- **Reset Process**
+  - Time-limited reset links (24 hours)
+  - Strong password requirements
+  - Password confirmation field
+  - Success notification and automatic login
+
+- **Account Recovery**
+  - Alternative recovery methods if email inaccessible
+  - Security questions (optional setup)
+  - Backup email option
+  - Support contact for manual verification
+
+### Authentication Security
+- **Protection Measures**
+  - HTTPS for all connections
+  - Salted and hashed password storage
+  - Brute force protection
+  - IP logging for suspicious activity
+  - Session expiration and renewal
+
+- **Social Authentication**
+  - Clear permissions disclosure
+  - Minimal data collection policy
+  - Account linking options
+  - Disconnection options in profile
+
+## Search Functionality
+
+### Search Interface
+- **Search Bar**
+  - Prominent positioning in header
+  - Expandable on focus
+  - Placeholder text: "Search brands, colors, fonts..."
+  - Keyboard shortcut: `/` (slash)
+  - Voice search option on compatible devices
+
+- **Search Triggers**
+  - Text input (minimum 2 characters)
+  - Automatic suggestions after 300ms pause
+  - Clear button (×) when text is present
+  - Search button with magnifying glass icon
+  - Keyboard enter to submit
+
+- **Visual Treatment**
+  - Dark mode: Light text on dark background
+  - Light mode: Dark text on light background
+  - Focus state: Orange accent border
+  - Hover state: Subtle background change
+  - Loading indicator for results
+
+### Search Functionality
+- **Search Scope**
+  - Current brand by default
+  - Option to search across all brands
+  - Filter by section (colors, typography, etc.)
+  - Filter by date created/modified
+  - Search within results option
+
+- **Search Intelligence**
+  - Fuzzy matching for typos
+  - Synonym recognition
+  - Color search by hex code or name
+  - Font search by name or characteristics
+  - Tag-based search for user-defined metadata
+
+- **Results Display**
+  - Categorized results (sections, elements)
+  - Preview thumbnails where applicable
+  - Context snippets with highlighted match
+  - Relevance ranking indicators
+  - Quick actions from results list
+
+- **Search History**
+  - Recent searches saved
+  - Clear history option
+  - Search suggestions based on history
+  - Save search query option
+
+### Advanced Search Features
+- **Filters and Refinements**
+  - Color-specific filters (by hue, saturation, etc.)
+  - Typography filters (serif, sans-serif, etc.)
+  - Date range filters
+  - Creator/owner filters for team accounts
+  - Status filters (draft, published, archived)
+
+- **Search Commands**
+  - Special syntax for advanced queries
+  - Example: "color:#FF0000" to find specific hex
+  - Example: "type:logo modified:last-week"
+  - Command suggestions as you type
+  - Help section for search syntax
+
+- **No Results Handling**
+  - Helpful suggestions for no results
+  - Did you mean corrections
+  - Related categories exploration
+  - Create new option when appropriate
+  - Contact support option for persistent issues
+
+- **Search Analytics**
+  - Most frequent searches (admin only)
+  - Failed searches tracking
+  - Search refinement patterns
+  - Time-to-find metrics
+  - Search result engagement tracking
+
+## Accessibility Considerations
+
+### Universal Design Principles
+- All interfaces should be navigable by keyboard
+- Color is not the sole indicator of any state or function
+- All interactive elements have appropriate focus states
+- Content maintains minimum contrast ratios (WCAG AA)
+- Error messages are clear and provide recovery paths
+- Time-sensitive actions include extension options
+
+### Specific Accommodations
+- Screen reader optimized navigation
+- Reduced motion option in preferences
+- Text size adjustment controls
+- High contrast mode option
+- Voice command support (where browser supported)
+- Keyboard shortcuts with visual overlay (press and hold Alt)
