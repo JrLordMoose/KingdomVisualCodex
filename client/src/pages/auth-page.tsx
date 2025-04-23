@@ -52,9 +52,9 @@ export default function AuthPage() {
           animate="visible"
         >
           <motion.div variants={itemVariants} className="mb-12">
-            <h1 className="text-6xl font-primary text-white tracking-tight mb-4">
-              <span className="text-branding-orange">K</span>
-              <span>NGDM</span>
+            <h1 className="text-6xl font-primary tracking-tight mb-4 flex items-center">
+              <span className="text-branding-orange drop-shadow-[0_0_4px_rgba(255,89,0,0.8)]">K</span>
+              <span style={{ textShadow: '0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5)' }} className="text-white">NGDM</span>
             </h1>
             <p className="text-white font-secondary">
               Visual Codex - The intelligent brand style guide generator
