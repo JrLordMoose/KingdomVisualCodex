@@ -76,6 +76,45 @@ export function setupAuth(app: Express) {
         password: await hashPassword(req.body.password),
       });
 
+      // Create default brand for new user
+      try {
+        // Import what we need from db and schema
+        const { db } = await import("./db");
+        const { brands, insertBrandSchema } = await import("@shared/schema");
+        
+        // Create a default brand
+        const defaultBrand = {
+          userId: user.id,
+          name: "My Brand",
+          tagline: "A powerful brand identity",
+          missionStatement: "Our mission is to create memorable, impactful brand experiences.",
+          keywords: ["Professional", "Modern", "Trusted"],
+          tone: "Professional",
+          narrative: {
+            origin: "Tell your brand's origin story here.",
+            values: "Describe your brand's core values and approach.",
+            vision: "Share your brand's vision for the future."
+          },
+          demographics: [
+            "Describe your primary audience here", 
+            "Add demographic details like age, location, etc."
+          ],
+          psychographics: [
+            "Interests and values of your audience", 
+            "Motivations and pain points"
+          ]
+        };
+        
+        // Validate data
+        const validatedData = insertBrandSchema.parse(defaultBrand);
+        
+        // Insert the brand
+        await db.insert(brands).values(validatedData);
+      } catch (error) {
+        console.error("Error creating default brand:", error);
+        // Don't fail registration if brand creation fails
+      }
+
       req.login(user, (err) => {
         if (err) return next(err);
         res.status(201).json(user);

@@ -48,6 +48,7 @@ const brandStorySchema = z.object({
 
 export default function BrandStoryPage() {
   const [showPreview, setShowPreview] = useState(false);
+  const [showCreateBrandForm, setShowCreateBrandForm] = useState(false);
   const [editMode, setEditMode] = useState({
     basics: false,
     voice: false,
@@ -57,8 +58,19 @@ export default function BrandStoryPage() {
   
   const { toast } = useToast();
   
-  const { data: brandData, isLoading } = useQuery<Brand>({
+  const { data: brandData, isLoading, error } = useQuery<Brand>({
     queryKey: ["/api/brands/current"],
+    // Don't throw error on 404 - we'll handle it in the UI
+    queryFn: async ({ signal }) => {
+      const response = await fetch('/api/brands/current', { signal });
+      if (response.status === 404) {
+        return null;
+      }
+      if (!response.ok) {
+        throw new Error('Failed to fetch brand data');
+      }
+      return response.json();
+    }
   });
   
   const form = useForm<BrandStoryFormValues>({
@@ -183,6 +195,155 @@ export default function BrandStoryPage() {
     vision: "Nexus envisions a future where the barriers between imagination and reality have dissolved, creating an ecosystem where innovative ideas can flourish and scale efficiently. We're committed to expanding our technological capabilities and global presence, while remaining firmly anchored to our founding mission. As we evolve, we aspire to be recognized not merely as service providers, but as transformational partners who fundamentally enhance how organizations conceptualize and implement change."
   };
   
+  // Create a new brand mutation
+  const createBrandMutation = useMutation({
+    mutationFn: async (data: BrandStoryFormValues) => {
+      const res = await apiRequest("POST", "/api/brands", data);
+      return await res.json();
+    },
+    onSuccess: () => {
+      toast({
+        title: "Brand created",
+        description: "Your brand has been created successfully.",
+      });
+      queryClient.invalidateQueries({ queryKey: ["/api/brands/current"] });
+      setShowCreateBrandForm(false);
+    },
+    onError: (error: Error) => {
+      toast({
+        title: "Failed to create brand",
+        description: error.message,
+        variant: "destructive",
+      });
+    },
+  });
+
+  // Handle submit for creating a new brand
+  const handleCreateBrand = (data: BrandStoryFormValues) => {
+    createBrandMutation.mutate(data);
+  };
+
+  // If no brand found and not loading, show create brand form or button
+  if (!isLoading && !brandData) {
+    return (
+      <AppLayout title="Create Brand">
+        <motion.div 
+          className="flex flex-col items-center justify-center min-h-[80vh]"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          {showCreateBrandForm ? (
+            <div className="w-full max-w-2xl">
+              <h1 className="font-primary text-4xl text-white tracking-tight mb-8 text-center">Create Your First Brand</h1>
+              
+              <Card className="bg-card-bg border-card-border">
+                <CardContent className="pt-6 space-y-6">
+                  <Form {...form}>
+                    <form onSubmit={form.handleSubmit(handleCreateBrand)} className="space-y-6">
+                      <FormField
+                        control={form.control}
+                        name="name"
+                        render={({ field }) => (
+                          <FormItem className="space-y-2">
+                            <FormLabel className="block text-xs uppercase tracking-wider font-secondary text-light-gray">Brand Name*</FormLabel>
+                            <FormControl>
+                              <Input
+                                className="w-full bg-sidebar-hover border border-dark-gray rounded-md px-4 py-2.5 text-white font-secondary focus:border-branding-orange focus:outline-none"
+                                placeholder="Enter your brand name"
+                                {...field}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <FormField
+                        control={form.control}
+                        name="tagline"
+                        render={({ field }) => (
+                          <FormItem className="space-y-2">
+                            <FormLabel className="block text-xs uppercase tracking-wider font-secondary text-light-gray">Tagline</FormLabel>
+                            <FormControl>
+                              <Input
+                                className="w-full bg-sidebar-hover border border-dark-gray rounded-md px-4 py-2.5 text-white font-secondary focus:border-branding-orange focus:outline-none"
+                                placeholder="A short, memorable phrase that captures your brand essence"
+                                {...field}
+                              />
+                            </FormControl>
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <FormField
+                        control={form.control}
+                        name="missionStatement"
+                        render={({ field }) => (
+                          <FormItem className="space-y-2">
+                            <div className="flex justify-between">
+                              <FormLabel className="block text-xs uppercase tracking-wider font-secondary text-light-gray">Mission Statement</FormLabel>
+                              <span className="text-xs text-light-gray font-secondary">{field.value?.length || 0}/250</span>
+                            </div>
+                            <FormControl>
+                              <Textarea
+                                className="w-full bg-sidebar-hover border border-dark-gray rounded-md px-4 py-2.5 text-white font-secondary focus:border-branding-orange focus:outline-none resize-none h-24"
+                                placeholder="Describe your brand's purpose and objectives"
+                                maxLength={250}
+                                {...field}
+                              />
+                            </FormControl>
+                          </FormItem>
+                        )}
+                      />
+                      
+                      <div className="flex justify-between pt-4">
+                        <Button
+                          type="button"
+                          variant="outline"
+                          onClick={() => setShowCreateBrandForm(false)}
+                          className="border-dark-gray text-light-gray hover:text-white hover:bg-sidebar-hover"
+                        >
+                          Cancel
+                        </Button>
+                        <Button
+                          type="submit"
+                          className="btn-primary"
+                          disabled={createBrandMutation.isPending}
+                        >
+                          {createBrandMutation.isPending ? "Creating..." : "Create Brand"}
+                        </Button>
+                      </div>
+                    </form>
+                  </Form>
+                </CardContent>
+              </Card>
+            </div>
+          ) : (
+            <div className="text-center space-y-6">
+              <div className="rounded-full bg-card-bg border border-card-border p-6 inline-block">
+                <BuildingStorefront className="h-12 w-12 text-branding-orange" />
+              </div>
+              <div className="space-y-3">
+                <h1 className="font-primary text-4xl text-white tracking-tight">Create Your First Brand</h1>
+                <p className="text-light-gray max-w-md font-secondary">
+                  Start by creating a brand to define your identity, story, colors, and more.
+                </p>
+              </div>
+              <Button 
+                className="btn-primary px-8 py-6 text-lg mt-4"
+                onClick={() => setShowCreateBrandForm(true)}
+              >
+                <Plus className="h-5 w-5 mr-2" />
+                Create Brand
+              </Button>
+            </div>
+          )}
+        </motion.div>
+      </AppLayout>
+    );
+  }
+
   return (
     <AppLayout title="Brand Story">
       {/* Page Header */}
