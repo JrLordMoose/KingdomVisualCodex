@@ -52,7 +52,10 @@ export default function AuthPage() {
           animate="visible"
         >
           <motion.div variants={itemVariants} className="mb-12">
-            <h1 className="text-6xl font-primary text-branding-orange tracking-tight mb-4">KNGDM</h1>
+            <h1 className="text-6xl font-primary text-white tracking-tight mb-4">
+              <span className="text-branding-orange">K</span>
+              <span>NGDM</span>
+            </h1>
             <p className="text-white font-secondary">
               Visual Codex - The intelligent brand style guide generator
             </p>
