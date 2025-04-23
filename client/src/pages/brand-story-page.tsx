@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Edit, Zap, Eye, Save, X } from "lucide-react";
+import { Edit, Zap, Eye, Save, X, Plus, Briefcase } from "lucide-react";
 import { motion } from "framer-motion";
 import { AppLayout } from "@/components/layout/app-layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { Brand } from "@shared/schema";
 import { apiRequest, queryClient } from "@/lib/queryClient";
@@ -322,7 +322,7 @@ export default function BrandStoryPage() {
           ) : (
             <div className="text-center space-y-6">
               <div className="rounded-full bg-card-bg border border-card-border p-6 inline-block">
-                <BuildingStorefront className="h-12 w-12 text-branding-orange" />
+                <Briefcase className="h-12 w-12 text-branding-orange" />
               </div>
               <div className="space-y-3">
                 <h1 className="font-primary text-4xl text-white tracking-tight">Create Your First Brand</h1>
